@@ -53,4 +53,5 @@ Sensor& Sensor::operator=(const Sensor& other){
     this->type = other.type;
     this->value = other.value;
     this->serv = other.serv;
+    return *this;
 }

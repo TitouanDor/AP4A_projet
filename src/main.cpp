@@ -2,7 +2,7 @@
 #include "Sensor.hpp"
 #include "Server.hpp"
 #include "Scheduler.hpp"
-#define SENSOR_NUMBER 4
+#define SENSOR_NUMBER 6
 
 
 int main() {
@@ -11,9 +11,10 @@ int main() {
     Sensor list[SENSOR_NUMBER] = {
         Sensor(1, "TEMP", serv1),
         Sensor(2, "LIGHT", serv1),
-        Sensor(3, "TEMP", serv2),
-        Sensor(4,"LIGHT", serv2),
-
+        Sensor(3, "HUMIDITY", serv1),
+        Sensor(4, "TEMP", serv2),
+        Sensor(5,"LIGHT", serv2),
+        Sensor(6,"HUMIDITY",serv2),
     };
     Scheduler sch = Scheduler(1,SENSOR_NUMBER,list);
 

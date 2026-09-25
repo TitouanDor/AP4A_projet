@@ -37,6 +37,7 @@ Scheduler& Scheduler::operator=(const Scheduler& sch){
     for(int i = 0;i<this->size;++i){
         this->list[i] = sch.list[i];
     }
+    return *this;
 
 }
 
