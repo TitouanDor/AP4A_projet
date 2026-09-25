@@ -1,0 +1,47 @@
+#include "Sensor.hpp"
+#include "Server.hpp"
+#include <random>
+
+
+
+Sensor::Sensor() : id(1), type("DEFAULT"), value(0){
+    this->serv = nullptr;
+}
+
+Sensor::~Sensor(){
+}
+
+Sensor::Sensor(const int id, const std::string type,Server *serv) : id(id), type(type){
+    this->serv = serv;
+}
+
+
+void Sensor::execute(){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    // Définition de l'intervalle [min, max]
+    std::uniform_real_distribution<float> dis(-10.0f, 10.0f);
+    float random_float = dis(gen);
+    this->value = random_float;
+}
+
+float Sensor::getValue(){
+    return this->value;
+}
+
+void Sensor::update(){
+    this->execute();
+    std::string mess = "[" + this->type + "] : " + std::to_string(this->value);
+    std::string filename = ".log";
+    if(this->serv){
+        this->serv->consoleWrite(mess);
+        this->serv->fileWrite(mess, filename);
+    }
+    
+}
+
+std::ostream& operator<<(std::ostream &os, const Sensor &sensor){
+    os << "[" << sensor.type << "] : " << sensor.value;
+    return os;
+}
