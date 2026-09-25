@@ -24,8 +24,11 @@ Scheduler::~Scheduler(){
 }
 
 void Scheduler::simulate(){
-    std::this_thread::sleep_for(std::chrono::seconds(this->delta));
-    for(int i = 0; i< this->size;++i){
-        this->list[i].update();
+    while(true){
+        std::this_thread::sleep_for(std::chrono::seconds(this->delta));
+        for(int i = 0; i< this->size;++i){
+            this->list[i].update();
+        }
     }
+    
 }

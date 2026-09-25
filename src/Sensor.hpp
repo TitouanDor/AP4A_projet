@@ -10,14 +10,43 @@ class Sensor{
         std::string type;
         float value;
         Server* serv;
-        void execute();
+        /**
+         * Permet d'attribuer une valeur au hasard
+         */
+        /*vitual*/void execute();
 
     public:
+        /**
+         * Constructeur par défault
+         */
         Sensor();
+
+        /**
+         * Constructeur
+         * @param id int identitfiant du sensor
+         * @param type std::string type du sensor (Lumière, température, humidité)
+         * @param serv Server* pointeur vers le serveur
+         */
         Sensor(const int id, const std::string type,Server *serv);
+
+        /**
+         * Destructeur
+         */
         ~Sensor();
+
+        /**
+         * Méthode activé pour mettre à jour le capteur et envoyer les donner au server
+         */
         void update();
+
+        /**
+         * Getter pour avoir la valeur du sensor, principalement pour du debug
+         */
         float getValue();
+
+        /**
+         * Permet de print le sensor
+         */
         friend std::ostream& operator<<(std::ostream &os, const Sensor &sensor);
 
 };

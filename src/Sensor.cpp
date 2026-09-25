@@ -31,6 +31,7 @@ float Sensor::getValue(){
 }
 
 void Sensor::update(){
+    //met en vie le sensor mais il ne prend pas forcément la mesure il faut que le catpeur sachant indépendament s'il dois prendre la mesure
     this->execute();
     std::string mess = "[" + this->type + "] : " + std::to_string(this->value);
     std::string filename = ".log";

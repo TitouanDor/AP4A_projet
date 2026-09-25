@@ -2,24 +2,23 @@
 #include "Sensor.hpp"
 #include "Server.hpp"
 #include "Scheduler.hpp"
-
+#define SENSOR_NUMBER 4
 
 
 int main() {
-    Server serv = Server("DEFAULT");
-    Sensor list[2] = {
-        Sensor(1, "TEMP", &serv),
-        Sensor(2, "LIGHT", &serv)
-    };
+    Server* serv1 = new Server("BUREAU1");
+    Server* serv2 = new Server("BUREAU2");
+    Sensor list[SENSOR_NUMBER] = {
+        Sensor(1, "TEMP", serv1),
+        Sensor(2, "LIGHT", serv1),
+        Sensor(3, "TEMP", serv2),
+        Sensor(4,"LIGHT", serv2),
 
-    std::cout << serv.getName() << std::endl;
-    Scheduler sch = Scheduler(1,2,list);
+    };
+    Scheduler sch = Scheduler(1,SENSOR_NUMBER,list);
 
     std::cout << "Starting IOT..." << std::endl;
-    for(int i = 0; i<10;++i){
-        sch.simulate();
-    }
-
+    sch.simulate();
     std::cout << "End" << std::endl;
     return 0;
 }
