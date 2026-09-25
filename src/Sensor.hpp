@@ -30,9 +30,21 @@ class Sensor{
         Sensor(const int id, const std::string type,Server *serv);
 
         /**
+         * Constructeur par recopie
+         * @param other Sensor à recopier
+         */
+        Sensor(const Sensor& other);
+
+        /**
          * Destructeur
          */
         ~Sensor();
+
+        /**
+         * Méthode d'affectation
+         * @param other le sensor à affecter
+         */
+        Sensor& operator=(const Sensor& other);
 
         /**
          * Méthode activé pour mettre à jour le capteur et envoyer les donner au server
@@ -46,6 +58,8 @@ class Sensor{
 
         /**
          * Permet de print le sensor
+         * @param os la sortie voulue
+         * @param sensor le sensor à afficher
          */
         friend std::ostream& operator<<(std::ostream &os, const Sensor &sensor);
 

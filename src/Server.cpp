@@ -6,11 +6,18 @@ Server::Server(): name("SERVER DEFAULT"){}
 
 Server::Server(std::string name) : name(name){}
 
+Server::Server(const Server& other) : name(other.name){}
 
 void Server::consoleWrite(const std::string& message){
     std::cout << message << std::endl;
 }
 
+Server::~Server(){}
+
+Server& Server::operator=(const Server& serv){
+    this->name = serv.name;
+    return *this;
+}
 
 void Server::fileWrite(const std::string& message, const std::string& filename){
     std::ofstream file(filename, std::ios::app);

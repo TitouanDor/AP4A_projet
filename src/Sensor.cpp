@@ -15,6 +15,7 @@ Sensor::Sensor(const int id, const std::string type,Server *serv) : id(id), type
     this->serv = serv;
 }
 
+Sensor::Sensor(const Sensor& other) : id(other.id), type(other.type), value(other.value), serv(other.serv){}
 
 void Sensor::execute(){
     std::random_device rd;
@@ -45,4 +46,11 @@ void Sensor::update(){
 std::ostream& operator<<(std::ostream &os, const Sensor &sensor){
     os << "[" << sensor.type << "] : " << sensor.value;
     return os;
+}
+
+Sensor& Sensor::operator=(const Sensor& other){
+    this->id = other.id;
+    this->type = other.type;
+    this->value = other.value;
+    this->serv = other.serv;
 }
