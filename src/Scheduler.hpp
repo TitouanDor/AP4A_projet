@@ -2,12 +2,12 @@
 #define SCHEDULER_HPP
 
 #include "Sensor.hpp"
+#include <vector>
 
 class Scheduler{
     private:
         int delta; //temps entre update
-        int size;
-        Sensor* list;
+        std::vector<Sensor*> list;
 
     public:
         /**
@@ -27,7 +27,7 @@ class Scheduler{
          * @param size nombre de Sensor dans la liste
          * @param list liste de tous les sensors
          */
-        Scheduler(int delta, int size, Sensor list[]);
+        Scheduler(int delta);
 
         /**
          * Destructeur par défault
@@ -38,6 +38,8 @@ class Scheduler{
          * Boucle infinie pour démarrer la simulation
          */
         void simulate();
+
+        void addSensor(Sensor* sensor);
 
         /**
          * Méthode pour l'affectation

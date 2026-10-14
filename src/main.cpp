@@ -16,7 +16,10 @@ int main() {
         Sensor(5,"LIGHT", serv2),
         Sensor(6,"HUMIDITY",serv2),
     };
-    Scheduler sch = Scheduler(1,SENSOR_NUMBER,list);
+    Scheduler sch = Scheduler(1);
+    for(int i = 0;i<SENSOR_NUMBER;++i){
+        sch.addSensor(&list[i]);
+    }
 
     std::cout << "Starting IOT..." << std::endl;
     sch.simulate();
