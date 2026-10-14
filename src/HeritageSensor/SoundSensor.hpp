@@ -6,10 +6,9 @@
 
 class SoundSensor : public Sensor{
     public:
-        SoundSensor(Server* Serv) : Sensor("Sound", "dB", Serv){}
+        SoundSensor(Server* Serv, int d) : Sensor("Sound", "dB", Serv, d){}
 
         float computeValue() override {
-
             std::random_device rd;
             std::mt19937 gen(rd());
 

@@ -13,11 +13,12 @@ class Sensor{
         std::string unit; 
         float value;
         Server* serv;
+        int delta = 1;
         
         /**
          * Permet d'attribuer une valeur au hasard
          */
-        void execute();
+        void execute(int time);
 
     protected:
         void setValue(float newValue){
@@ -33,9 +34,11 @@ class Sensor{
         /**
          * Constructeur
          * @param type std::string type du sensor (Lumière, température, humidité)
+         * @param unit unité pour le type de valeur
          * @param serv Server* pointeur vers le serveur
+         * @param delta interval de la prise de mesure
          */
-        Sensor(const std::string type, std::string unit, Server *serv);
+        Sensor(const std::string type, std::string unit, Server *serv, int delta);
 
         /**
          * Constructeur par recopie

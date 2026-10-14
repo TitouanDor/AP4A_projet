@@ -9,15 +9,11 @@
 
 int main() {
     Server* serv1 = new Server("BUREAU1", true);
-    Server* serv2 = new Server("BUREAU2", false);
 
     Scheduler sch = Scheduler(1);
-    sch.addSensor(new LightSensor(serv1));
-    sch.addSensor(new SoundSensor(serv1));
-    sch.addSensor(new TempSensor(serv1));
-    sch.addSensor(new LightSensor(serv2));
-    sch.addSensor(new SoundSensor(serv2));
-    sch.addSensor(new TempSensor(serv2));
+    sch.addSensor(new LightSensor(serv1,1));
+    sch.addSensor(new SoundSensor(serv1, 3));
+    sch.addSensor(new TempSensor(serv1, 999));
 
     std::cout << "Starting IOT..." << std::endl;
     sch.simulate();
