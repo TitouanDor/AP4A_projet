@@ -6,6 +6,7 @@
 
 class Sensor{
     private:
+        static int next_id;
         int id;
         std::string type;
         float value;
@@ -28,11 +29,10 @@ class Sensor{
 
         /**
          * Constructeur
-         * @param id int identitfiant du sensor
          * @param type std::string type du sensor (Lumière, température, humidité)
          * @param serv Server* pointeur vers le serveur
          */
-        Sensor(const int id, const std::string type,Server *serv);
+        Sensor(const std::string type,Server *serv);
 
         /**
          * Constructeur par recopie
@@ -64,7 +64,7 @@ class Sensor{
         /**
          * Sert à calculer la valeur capturer par un sensor
         */
-        virtual void computeValue() = 0;
+        //virtual void computeValue() = 0;
 
         /**
          * Permet de print le sensor

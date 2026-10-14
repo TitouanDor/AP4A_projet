@@ -2,20 +2,20 @@
 #include "Server.hpp"
 #include <random>
 
+int Sensor::next_id = 0;
 
-
-Sensor::Sensor() : id(1), type("DEFAULT"), value(0){
+Sensor::Sensor() : id(next_id++), type("DEFAULT"), value(0){
     this->serv = nullptr;
 }
 
 Sensor::~Sensor(){
 }
 
-Sensor::Sensor(const int id, const std::string type,Server *serv) : id(id), type(type){
+Sensor::Sensor(const std::string type,Server *serv) : id(next_id++), type(type){
     this->serv = serv;
 }
 
-Sensor::Sensor(const Sensor& other) : id(other.id), type(other.type), value(other.value), serv(other.serv){}
+Sensor::Sensor(const Sensor& other) : id(next_id++), type(other.type), value(other.value), serv(other.serv){}
 
 void Sensor::execute(){
     std::random_device rd;
