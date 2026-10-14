@@ -6,8 +6,8 @@
 
 
 int main() {
-    Server* serv1 = new Server("BUREAU1");
-    Server* serv2 = new Server("BUREAU2");
+    Server* serv1 = new Server("BUREAU1", true);
+    Server* serv2 = new Server("BUREAU2", false);
     Sensor list[SENSOR_NUMBER] = {
         Sensor(1, "TEMP", serv1),
         Sensor(2, "LIGHT", serv1),

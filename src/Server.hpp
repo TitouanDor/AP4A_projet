@@ -6,6 +6,7 @@
 class Server {
     private:
         std::string name;
+        bool ConsoleEnable;
     public:
         /**
          * Constructeur par défault
@@ -26,8 +27,9 @@ class Server {
         /**
          * Constructeur
          * @param name le nom du server
+         * @param consol true ou false si vous voulez que la console print
          */
-        Server(std::string name);
+        Server(std::string name, bool console);
 
         /**
          * Getter pour récupérer le nom, principalement pour le débug

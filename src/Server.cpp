@@ -2,14 +2,17 @@
 #include <iostream>
 #include <fstream>
 
-Server::Server(): name("SERVER DEFAULT"){}
+Server::Server(): name("SERVER DEFAULT"), ConsoleEnable(true){}
 
-Server::Server(std::string name) : name(name){}
+Server::Server(std::string name, bool console) : name(name), ConsoleEnable(console){}
 
-Server::Server(const Server& other) : name(other.name){}
+Server::Server(const Server& other) : name(other.name), ConsoleEnable(other.ConsoleEnable){}
 
 void Server::consoleWrite(const std::string& message){
-    std::cout << message << std::endl;
+    if(this->ConsoleEnable){
+        std::cout << message << std::endl;
+    }
+    
 }
 
 Server::~Server(){}
@@ -21,6 +24,7 @@ Server& Server::operator=(const Server& serv){
 
 void Server::fileWrite(const std::string& message, const std::string& filename){
     std::ofstream file(filename, std::ios::app);
+    if(this->ConsoleEnable){}
     std::string format = "[" + this->name + "] : " + message;
     file << format << std::endl;
     file.close();
