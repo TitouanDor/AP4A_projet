@@ -6,9 +6,9 @@
 
 class SoundSensor : public Sensor{
     public:
-        TempSensor(int id, Server* Serv) : Sensor(id, "dB", Serv){}
+        SoundSensor(Server* Serv) : Sensor("dB", Serv){}
 
-        void computeValue() override {
+        float computeValue() override {
 
             std::random_device rd;
             std::mt19937 gen(rd());
@@ -16,7 +16,7 @@ class SoundSensor : public Sensor{
             // Définition de l'intervalle [min, max]
             std::uniform_real_distribution<float> dis(0.0f, 110.0f);
             float random_float = dis(gen);
-            this->setValue(random_float);
+            return random_float;
         }
 
 };

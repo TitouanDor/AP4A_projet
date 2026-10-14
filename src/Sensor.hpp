@@ -2,6 +2,7 @@
 #define SENSOR_HPP
 
 #include <iostream>
+#include <random>
 #include "Server.hpp"
 
 class Sensor{
@@ -64,7 +65,7 @@ class Sensor{
         /**
          * Sert à calculer la valeur capturer par un sensor
         */
-        //virtual void computeValue() = 0;
+        virtual float computeValue() = 0;
 
         /**
          * Permet de print le sensor

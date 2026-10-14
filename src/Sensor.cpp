@@ -18,12 +18,7 @@ Sensor::Sensor(const std::string type,Server *serv) : id(next_id++), type(type){
 Sensor::Sensor(const Sensor& other) : id(next_id++), type(other.type), value(other.value), serv(other.serv){}
 
 void Sensor::execute(){
-    std::random_device rd;
-    std::mt19937 gen(rd());
-
-    // Définition de l'intervalle [min, max]
-    std::uniform_real_distribution<float> dis(-10.0f, 10.0f);
-    float random_float = dis(gen);
+    float random_float = this->computeValue();
     this->value = random_float;
 }
 
@@ -34,7 +29,7 @@ float Sensor::getValue(){
 void Sensor::update(){
     //met en vie le sensor mais il ne prend pas forcément la mesure il faut que le catpeur sachant indépendament s'il dois prendre la mesure
     this->execute();
-    std::string mess = "[" + this->type + "] : " + std::to_string(this->value);
+    std::string mess = "[id:" + std::to_string(this->id) + "] : " + std::to_string(this->value) + " "+ this->type;
     std::string filename = ".log";
     if(this->serv){
         this->serv->consoleWrite(mess);
