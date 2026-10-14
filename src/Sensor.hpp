@@ -12,10 +12,11 @@ class Sensor{
         std::string type;
         float value;
         Server* serv;
+        
         /**
          * Permet d'attribuer une valeur au hasard
          */
-        /*vitual*/void execute();
+        void execute();
 
     protected:
         void setValue(float newValue){

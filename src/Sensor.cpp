@@ -1,6 +1,7 @@
 #include "Sensor.hpp"
 #include "Server.hpp"
 #include <random>
+#include <time.h>
 
 int Sensor::next_id = 0;
 
@@ -29,11 +30,18 @@ float Sensor::getValue(){
 void Sensor::update(){
     //met en vie le sensor mais il ne prend pas forcément la mesure il faut que le catpeur sachant indépendament s'il dois prendre la mesure
     this->execute();
-    std::string mess = "[id:" + std::to_string(this->id) + "] : " + std::to_string(this->value) + " "+ this->type;
-    std::string filename = ".log";
+    time_t t = time(NULL);
+    std::string char_time = std::to_string(t);
+    std::string char_value = std::to_string(this->value);
+    std::string mess = "[id:" + std::to_string(this->id) + "] : " + char_value + " "+ this->type;
+    std::string filename = this->serv->getName() + "_" + this->type + ".log";
+
+    std::string log = char_time + ";" +  char_value;
+
+
     if(this->serv){
         this->serv->consoleWrite(mess);
-        this->serv->fileWrite(mess, filename);
+        this->serv->fileWrite(log, filename);
     }
     
 }

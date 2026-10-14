@@ -24,9 +24,7 @@ Server& Server::operator=(const Server& serv){
 
 void Server::fileWrite(const std::string& message, const std::string& filename){
     std::ofstream file(filename, std::ios::app);
-    if(this->ConsoleEnable){}
-    std::string format = "[" + this->name + "] : " + message;
-    file << format << std::endl;
+    file << message << std::endl;
     file.close();
 }
 
