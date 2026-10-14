@@ -7,7 +7,7 @@
 class LightSensor : public Sensor{
 
     public:
-        LightSensor(Server* Serv) : Sensor("Lux", Serv){}
+        LightSensor(Server* Serv) : Sensor("Light", "Lux", Serv){}
 
         float computeValue() override {
 

@@ -6,7 +6,7 @@
 
 class SoundSensor : public Sensor{
     public:
-        SoundSensor(Server* Serv) : Sensor("dB", Serv){}
+        SoundSensor(Server* Serv) : Sensor("Sound", "dB", Serv){}
 
         float computeValue() override {
 

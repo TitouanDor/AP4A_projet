@@ -10,6 +10,7 @@ class Sensor{
         static int next_id;
         int id;
         std::string type;
+        std::string unit; 
         float value;
         Server* serv;
         
@@ -34,7 +35,7 @@ class Sensor{
          * @param type std::string type du sensor (Lumière, température, humidité)
          * @param serv Server* pointeur vers le serveur
          */
-        Sensor(const std::string type,Server *serv);
+        Sensor(const std::string type, std::string unit, Server *serv);
 
         /**
          * Constructeur par recopie

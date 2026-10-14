@@ -6,7 +6,7 @@
 
 class TempSensor : public Sensor{
     public:
-        TempSensor(Server* Serv) : Sensor("°C", Serv) {}
+        TempSensor(Server* Serv) : Sensor("Temp", "°C", Serv) {}
         float computeValue() override {
 
             std::random_device rd;
