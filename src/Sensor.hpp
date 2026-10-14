@@ -15,6 +15,11 @@ class Sensor{
          */
         /*vitual*/void execute();
 
+    protected:
+        void setValue(float newValue){
+            this->value = newValue;
+        }
+
     public:
         /**
          * Constructeur par défault
@@ -55,6 +60,11 @@ class Sensor{
          * Getter pour avoir la valeur du sensor, principalement pour du debug
          */
         float getValue();
+
+        /**
+         * Sert à calculer la valeur capturer par un sensor
+        */
+        virtual void computeValue() = 0;
 
         /**
          * Permet de print le sensor
