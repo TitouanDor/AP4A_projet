@@ -2,12 +2,29 @@
 #define LIGHTSENSOR_HPP
 
 #include "../Sensor.hpp"
+#include "../Server.hpp"
 #include <random>
 
 class LightSensor : public Sensor{
 
     public:
-        LightSensor(Server* Serv, int d) : Sensor("Light", "Lux", Serv, d){}
+        LightSensor(Server* serv, int delta) : Sensor("Light", "Lux", serv, delta){}
+
+        LightSensor() : Sensor("Light", "Lux", new Server(), 1) {}
+
+        LightSensor(const LightSensor& other) : Sensor(other.type, other.unit, other.serv, other.delta) {}
+
+        ~LightSensor() {}
+
+        LightSensor& operator=(const LightSensor& other){
+            this->id = next_id++;
+            this->delta = other.delta;
+            this->serv = other.serv;
+            this->type = other.type;
+            this->unit = other.unit;
+            this->value = other.value;
+            return *this;
+        }
 
         float computeValue() override {
             std::random_device rd;

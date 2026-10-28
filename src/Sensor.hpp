@@ -5,7 +5,7 @@
 #include "Server.hpp"
 
 class Sensor{
-    private:
+    protected:
         static int next_id;
         int id;
         std::string type;
@@ -19,7 +19,6 @@ class Sensor{
          */
         void execute(int time);
 
-    protected:
         void setValue(float newValue){
             this->value = newValue;
         }
@@ -68,7 +67,7 @@ class Sensor{
 
         /**
          * Sert à calculer la valeur capturer par un sensor
-        */
+         */
         virtual float computeValue() = 0;
 
         /**
