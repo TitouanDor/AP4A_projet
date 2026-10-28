@@ -2,7 +2,6 @@
 #define SENSOR_HPP
 
 #include <iostream>
-#include <random>
 #include "Server.hpp"
 
 class Sensor{

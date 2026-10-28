@@ -1,6 +1,5 @@
 #include "Sensor.hpp"
 #include "Server.hpp"
-#include <random>
 #include <time.h>
 
 int Sensor::next_id = 0;

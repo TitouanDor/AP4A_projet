@@ -2,7 +2,7 @@
 #define TEMPSENSOR_HPP
 
 #include "../Sensor.hpp"
-
+#include <random>
 
 class TempSensor : public Sensor{
     public:
@@ -16,7 +16,6 @@ class TempSensor : public Sensor{
             float random_float = dis(gen);
             return random_float;
         }
-
 };
 
 #endif

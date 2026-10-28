@@ -2,7 +2,7 @@
 #define LIGHTSENSOR_HPP
 
 #include "../Sensor.hpp"
-
+#include <random>
 
 class LightSensor : public Sensor{
 
@@ -18,8 +18,6 @@ class LightSensor : public Sensor{
             float random_float = dis(gen);
             return random_float;
         }
-        
-
 };
 
 #endif

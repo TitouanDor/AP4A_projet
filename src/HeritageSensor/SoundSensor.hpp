@@ -2,7 +2,7 @@
 #define SOUNDSENSOR_HPP
 
 #include "../Sensor.hpp"
-
+#include <random>
 
 class SoundSensor : public Sensor{
     public:
@@ -17,7 +17,6 @@ class SoundSensor : public Sensor{
             float random_float = dis(gen);
             return random_float;
         }
-
 };
 
 #endif

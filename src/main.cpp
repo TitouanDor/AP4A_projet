@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Sensor.hpp"
 #include "HeritageSensor/LightSensor.hpp"
 #include "HeritageSensor/SoundSensor.hpp"
 #include "HeritageSensor/TempSensor.hpp"
@@ -13,7 +12,7 @@ int main() {
     Scheduler sch = Scheduler(1);
     sch.addSensor(new LightSensor(serv1,1));
     sch.addSensor(new SoundSensor(serv1, 3));
-    sch.addSensor(new TempSensor(serv1, 999));
+    sch.addSensor(new TempSensor(serv1, 9));
 
     std::cout << "Starting IOT..." << std::endl;
     sch.simulate();
